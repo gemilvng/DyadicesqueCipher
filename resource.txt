@@ -1,0 +1,20 @@
+1. Repo bagus untuk dibaca:
+a. https://github.com/manishjathan/Image-Encryption-Using-Chaotic-Map/tree/master
+b. https://github.com/ilyeshammadi/hill-image-cipher
+
+2. Cara install python package di local:
+a. https://www.listendata.com/2019/04/install-python-package.html
+
+3. Examine Repository: Image-Encryption-Using-Chaotic-Map
+	a. ImageTransformation.py: PIL, os
+	b. ImageEncryptionUI.py: tkinter, os, PIL 
+	c. Image Encryption UI.py: tkinter, os, PIL
+	d. Image Decryption UI.py: tkinter, os, PIL
+	e. HenonDecryption.py: PIL
+	f. generateHenonMap.py: PIL
+	g. generateArnoldMap.py: PIL, numpy, os
+	h. createImageMatrix.py: PIL
+	i. ArnoldDecryption.py: PIL (Python Imaging Library), os
+
+4. Examine Repository: hill-image-cipher
+	a.
