@@ -32,6 +32,9 @@ def bernoulli_shift(x, n):
 def generate_indices(seed, size):
     trajectory = bernoulli_shift(seed, size)
     indices = np.argsort(trajectory)
+    # Debug: Print the first 10 values of the trajectory and indices for analysis
+    print(f"Seed: {seed}, First 10 values of trajectory: {trajectory[:10]}")
+    print(f"First 10 values of indices: {indices[:10]}")
     return indices
 
 def shuffle_image(image, indices):
