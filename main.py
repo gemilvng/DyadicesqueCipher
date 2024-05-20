@@ -3,12 +3,12 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 import numpy as np
 import os
+import time
 
-# Create the main window
+#Window
 root = tk.Tk()
 root.title("Bernoulli Shift Image Encryption")
 
-# Frames for organization
 topFrame = tk.Frame(root)
 topFrame.pack()
 
@@ -21,7 +21,6 @@ bottomFrame.pack(side=tk.BOTTOM)
 encryptionFrame = tk.Frame(root)
 encryptionFrame.pack(side=tk.BOTTOM)
 
-# Functions for image encryption and decryption
 def bernoulli_shift(x, n):
     trajectory = np.empty(n)
     for i in range(n):
@@ -32,7 +31,6 @@ def bernoulli_shift(x, n):
 def generate_indices(seed, size):
     trajectory = bernoulli_shift(seed, size)
     indices = np.argsort(trajectory)
-    # Debug: Print the first 10 values of the trajectory and indices for analysis
     print(f"Seed: {seed}, First 10 values of trajectory: {trajectory[:10]}")
     print(f"First 10 values of indices: {indices[:10]}")
     return indices
@@ -65,6 +63,7 @@ def load_and_display_image(image_path, label):
     label.image = image
 
 def performEncryption():
+    start_time = time.time()
     file_path = entry1.get()
     if not file_path:
         error_label.config(text="No image selected.")
@@ -89,8 +88,12 @@ def performEncryption():
     entry2.delete(0, tk.END)
     entry2.insert(0, os.path.abspath("encrypted_image.bmp"))
     display_image(encrypted_image_label, image)
+    end_time = time.time()
+    time_total = end_time - start_time
+    print(time_total)
 
 def performDecryption():
+    start_time = time.time()
     file_path = entry2.get()
     if not file_path:
         error_label.config(text="No encrypted image selected.")
@@ -115,6 +118,9 @@ def performDecryption():
     entry4.delete(0, tk.END)
     entry4.insert(0, os.path.abspath("decrypted_image.bmp"))
     display_image(decrypted_image_label, image)
+    end_time = time.time()
+    time_total = end_time - start_time
+    print(time_total)
 
 def save_image(image, output_path):
     image.save(output_path)
@@ -129,7 +135,7 @@ def openFileForViewing(entry):
     if os.path.exists(file_path):
         os.startfile(file_path)
 
-# Widgets
+#Widgets
 label_seed = tk.Label(topFrame, text="Seed (float):")
 entry_seed = tk.Entry(topFrame)
 
@@ -180,5 +186,5 @@ original_image_label.pack(side=tk.LEFT, padx=5, pady=5)
 encrypted_image_label.pack(side=tk.LEFT, padx=5, pady=5)
 decrypted_image_label.pack(side=tk.LEFT, padx=5, pady=5)
 
-# Start the main loop
+# Loop
 root.mainloop()
